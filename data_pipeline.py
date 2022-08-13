@@ -5,7 +5,7 @@ import json
 import os
 from collections import Counter
 import csv
-from datetime import datetime, date
+from datetime import datetime
 import shutil
 
 # ====================== EXTRACTION ===============================
@@ -25,7 +25,7 @@ for i in range(len(files)):
     weather_text_array = ["No Data"]*len(data)
 
     # Initialise an empty array that will contain the top three most common weather text
-    top_three = ["No Data"]*3
+    top_three = [""]*3
 
     # Retrieve the start datetime and end datetime of each file
     start_datetime = data[len(data)-1]["LocalObservationDateTime"]
@@ -50,7 +50,7 @@ for i in range(len(files)):
     f.close()
 
     # Archive the json file
-    shutil.move(r'weather_data/'+files[i], r'archived_weather_data/'+str(date.today().strftime("%d-%m-%Y"))+"_"+files[i])
+    shutil.move(r'weather_data/'+files[i], r'archived_weather_data/'+str(start_date)+"_"+city_name+".json")
 
 # ====================== TRANFORMATION ===============================
     # Calculate the average temperature
@@ -74,7 +74,7 @@ for i in range(len(files)):
         writer = csv.writer(f)
 
         # Write the header row to the csv file
-        writer.writerow(["Start Date","End Date","Start Time","End Time","City","Average Temperature in Celcius","Top Three Most Common Weather Text"])
+        writer.writerow(["Start Date","Start Time","End Date","End Time","City","Average Temperature in Celcius","Top Three Most Common Weather Text"])
 
         # close the file
         f.close()
@@ -86,7 +86,7 @@ for i in range(len(files)):
     writer = csv.writer(f)
 
     # Write the row of data extracted from the JSON file
-    writer.writerow([start_date,end_date,start_time,end_time,city_name,average_temp,top_three]) 
+    writer.writerow([start_date,start_time,end_date,end_time,city_name,average_temp,top_three]) 
 
     # close the file
     f.close()
