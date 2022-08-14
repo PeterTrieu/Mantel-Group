@@ -19,7 +19,8 @@ The modules that are used in this solution are listed below.
 To run the solution, the following is required:
 - Ensure that the data to be processed is located within a folder called **weather_data**, that is on the same folder level as the **data_pipeline.py** script
 - Ensure that there are folders called **archived_weather_data** and **weather_results** that are on the same folder level as **data_pipeline.py** script
-- For the JSON that will be processed, it must be in a similar format as shown below:
+- Drop the JSON files to be processed into the folder **weather_data** folder
+- For the JSON files that will be processed, it must be in a similar format as shown below:
 ```
 [
     {
@@ -46,4 +47,4 @@ To run the solution, the following is required:
     }
 ]
 ```
-Then run the **data_pipeline.py** script that will generate the weather results as a csv file into the **weather_results** folder and will archive all the JSON files into the **archived_weather_data** folder. It will also rename the file with the city name and the start date of the data.
+Run the **data_pipeline.py** script to generate the weather results as a csv file located in the **weather_results** folder, it will also archive all the JSON files into the **archived_weather_data** folder and rename the files with the start date and city name of the data.
