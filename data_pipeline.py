@@ -50,7 +50,7 @@ for i in range(len(files)):
     f.close()
 
     # Archive the json file
-    shutil.move(r'weather_data/'+files[i], r'archived_weather_data/'+str(start_date)+"_"+city_name+".json")
+    shutil.move(r'weather_data/'+files[i], r'archived_weather_data/'+str(end_date)+"_"+city_name+".json")
 
 # ====================== TRANFORMATION ===============================
     # Calculate the average temperature
